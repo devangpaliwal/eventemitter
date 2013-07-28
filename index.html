@@ -3,8 +3,57 @@
 <head>
 <meta charset="utf-8" />
 <title>Event Emitter</title>
+<style>
+	body{padding:5px 20px;}
+</style>
 </head>
 <body>
+
+
+<h1>Mini Event Framework</h1>
+<p>
+	It allows javascript objects to bind and listen to events.
+</p>	
+
+<h3>Class - EventEmitter</h3>
+
+<h3>Methods</h3>
+<ul>
+	<li>bind</li>
+	<li>unbind</li>
+	<li>trigger</li>
+</ul>	
+
+<h4>Sample Usage</h4>
+<pre>
+function Model(){};
+
+eventify(Model,EventEmitter);
+
+var myModel=new Model();
+
+function foo(){
+	console.log(" OMG ");
+}
+
+myModel.bind("hello",function(){
+	console.log("1st function called");
+})
+
+myModel.bind("hello",function(){
+	console.log("2nd function called");
+})
+
+myModel.bind("hello",foo);
+
+myModel.trigger("hello",{"name":"devang"});
+
+myModel.unbind("hello",foo);
+
+myModel.trigger("hello",{"name":"devang"});
+
+
+</pre>	
 
 
 <script src="eventemitter.js"></script>
