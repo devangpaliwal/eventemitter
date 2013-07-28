@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Event Emitter</title>
+</head>
+<body>
+
+
+<script src="eventemitter.js"></script>
+<script>
+/*
+*   Example: Usage
+*/
+
+function Model(){};
+
+eventify(Model,EventEmitter);
+
+var myModel=new Model();
+
+function aajMaiUnbind(){
+	console.log(" OMG ");
+}
+
+myModel.bind("hello",function(){
+	console.log("1st function called");
+})
+
+myModel.bind("hello",function(){
+	console.log("2nd function called");
+})
+
+myModel.bind("hello",aajMaiUnbind);
+
+myModel.trigger("hello",{"name":"devang"});
+
+myModel.unbind("hello",aajMaiUnbind);
+
+myModel.trigger("hello",{"name":"devang"});
+
+</script>
+
+
+</body>
+</html>
